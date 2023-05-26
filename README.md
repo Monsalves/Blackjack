@@ -10,3 +10,5 @@ Tendremos la clase "Juego", en el que se verá quién será el ganador y el punt
 Análisis Diagrama:
 La clase Jugar se relaciona con la clase baraja y jugador mediante una dependencia a su vez la clase baraja se 
 relaciona con la clase carta mediante una asosiación.
+
+En la rama "Felipe" estará el código
