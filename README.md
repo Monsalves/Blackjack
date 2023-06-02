@@ -19,3 +19,8 @@ luego sacamos 3 cartas del array y se las agregamos a los jugadores.
 luego calculamos el puntaje de cada mano del jugador al revisar su mano y hacer uso de la función "getValorJuego" de la Clase Carta.
 luego se usan if -else , comparando el valor de la mano de cada jugador , para posteriormente imprimir el ganador del encuentro.
 
+pd:
+ puntaje2 = (int) puntaje.get(3)+(int) puntaje.get(4)+(int) puntaje.get(2);
+ hay un error en la linea anterior que esta en la clase BlackJack en el  metodo "AsignarPuntaje"
+ puntaje2 = (int) puntaje.get(3)+(int) puntaje.get(4)+(int) puntaje.get(5);
+ así quedaría corregido, no me deja hacer ese puro cambio y subirlo corregido :(
