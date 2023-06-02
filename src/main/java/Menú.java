@@ -7,6 +7,7 @@ import java.util.List;
 public class Menú {
     public static void main(String[] args) {
         BlackJack juego = new BlackJack();
+
         juego.jugar();
 
     }

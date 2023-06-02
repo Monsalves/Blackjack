@@ -71,10 +71,10 @@ public class BlackJack {
         }
         int puntaje1 = 0;
         int puntaje2 = 0;
-        for (int i = 0; i < 3; i++) {
-            puntaje1 = (int) puntaje.get(i)+(int) puntaje.get(i);
-            puntaje2 = (int) puntaje.get(i + 3)+(int) puntaje.get(i + 3);
-        }
+
+        puntaje1 = (int) puntaje.get(0)+(int) puntaje.get(1)+(int) puntaje.get(2);
+        puntaje2 = (int) puntaje.get(3)+(int) puntaje.get(4)+(int) puntaje.get(2);
+
         jugadores.get(0).setPuntaje(puntaje1);
         jugadores.get(1).setPuntaje(puntaje2);
 
@@ -87,15 +87,35 @@ public class BlackJack {
     public void verGanador(){
         if (jugadores.get(0).getPuntaje() > 21){
             System.out.println("lo siento wacho, lo perdiste todo");
+
+            System.out.println("puntaje tuyo:");
+            System.out.println(jugadores.get(0).getPuntaje());
+            System.out.println("Puntaje de Botardo:");
+            System.out.println(jugadores.get(1).getPuntaje());
         }
         else if (jugadores.get(0).getPuntaje() <= 21 && jugadores.get(1).getPuntaje()>jugadores.get(0).getPuntaje() && jugadores.get(1).getPuntaje()<=21) {
             System.out.println("el ganador es " + jugadores.get(1).getNombre()+"(como te gana un bot jaja");
+
+            System.out.println("puntaje tuyo:");
+            System.out.println(jugadores.get(0).getPuntaje());
+            System.out.println("Puntaje de Botardo:");
+            System.out.println(jugadores.get(1).getPuntaje());
         }
-        else if (jugadores.get(0).getPuntaje() <= 21 && jugadores.get(1).getPuntaje()<jugadores.get(0).getPuntaje()) {
+        else if (jugadores.get(0).getPuntaje() <= 21 && jugadores.get(1).getPuntaje()<jugadores.get(0).getPuntaje() && jugadores.get(1).getPuntaje()<=21)  {
             System.out.println("FELICIDADES LOCOOOOOO, SOS MILLONARIO, (deberías dedicarte a las apuestas\n en vez de estudiar informática :)");
+
+            System.out.println("puntaje tuyo:");
+            System.out.println(jugadores.get(0).getPuntaje());
+            System.out.println("Puntaje de Botardo:");
+            System.out.println(jugadores.get(1).getPuntaje());
         }
         else if (jugadores.get(0).getPuntaje() == jugadores.get(1).getPuntaje()) {
             System.out.println("No gana ninguno, gana la casa HAHAHAHHAHAHAHHAHAH");
+
+            System.out.println("puntaje tuyo:");
+            System.out.println(jugadores.get(0).getPuntaje());
+            System.out.println("Puntaje de Botardo:");
+            System.out.println(jugadores.get(1).getPuntaje());
         }
     }
 
