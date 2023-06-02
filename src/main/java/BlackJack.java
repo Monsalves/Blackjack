@@ -14,6 +14,7 @@ public class BlackJack {
         System.out.println("Birminia,Nepal, Irak y próximamente en Chile!!!");
     }
     public void jugar(){
+
         menu();
         crearMazo();
         crearJugador();
