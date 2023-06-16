@@ -1,11 +1,8 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-
-
-
 public class BlackJack {
-    private ArrayList<Carta> mazo_blackjack = new ArrayList<>(0);
-    private ArrayList<Jugador> jugadores = new ArrayList<>();
+    private ArrayList<Carta> mazo_blackjack = new ArrayList<Carta>(0);
+    private ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
 
 
     public void menu(){
@@ -14,7 +11,6 @@ public class BlackJack {
         System.out.println("Birminia,Nepal, Irak y próximamente en Chile!!!");
     }
     public void jugar(){
-
         menu();
         crearMazo();
         crearJugador();
@@ -23,6 +19,8 @@ public class BlackJack {
         mostrarJugadores();
         asignarPuntaje();
         verGanador();
+
+
 
     }
 
@@ -42,7 +40,7 @@ public class BlackJack {
         baraja.llenarMazo();
         baraja.mezclarMazo();
         mazo_blackjack = baraja.getMazo();
-        System.out.println(mazo_blackjack.size());
+
     }
     public void repartirCartas() {
         for (int i = 0; i < jugadores.size(); i++) {
@@ -73,7 +71,7 @@ public class BlackJack {
         int puntaje2 = 0;
 
         puntaje1 = (int) puntaje.get(0)+(int) puntaje.get(1)+(int) puntaje.get(2);
-        puntaje2 = (int) puntaje.get(3)+(int) puntaje.get(4)+(int) puntaje.get(2);
+        puntaje2 = (int) puntaje.get(3)+(int) puntaje.get(4)+(int) puntaje.get(5);
 
         jugadores.get(0).setPuntaje(puntaje1);
         jugadores.get(1).setPuntaje(puntaje2);
@@ -116,6 +114,9 @@ public class BlackJack {
             System.out.println(jugadores.get(0).getPuntaje());
             System.out.println("Puntaje de Botardo:");
             System.out.println(jugadores.get(1).getPuntaje());
+        }
+        else{
+            System.out.println("Gracias por jugar");
         }
     }
 

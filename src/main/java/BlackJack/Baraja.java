@@ -1,9 +1,9 @@
+import Enum.Color;
+import Enum.Numero;
+import Enum.Pinta;
+
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
-import Enum.Color;
-import Enum.Pinta;
-import Enum.Numero;
 public class Baraja {
     private ArrayList<Carta> mazo = new ArrayList<>();
 
