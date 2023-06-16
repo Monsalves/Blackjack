@@ -2,6 +2,7 @@ import Enum.Color;
 import Enum.Pinta;
 import Enum.Numero;
 import GUIS.MenuPrincipal;
+import BlackJack.*;
 
 import java.util.ArrayList;
 import java.util.List;

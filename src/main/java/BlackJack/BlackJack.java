@@ -1,5 +1,9 @@
+package BlackJack;
+
 import java.util.ArrayList;
 import java.util.Scanner;
+import BlackJack.Carta;
+import BlackJack.*;
 public class BlackJack {
     private ArrayList<Carta> mazo_blackjack = new ArrayList<Carta>(0);
     private ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
