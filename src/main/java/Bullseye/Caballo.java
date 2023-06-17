@@ -22,12 +22,18 @@ public class Caballo {
     public String getColor(){
         return color;
     }
+    public int getTiempo() {
+        return tiempo;
+    }
+    public void setTiempo(int tiempo) {
+        this.tiempo = tiempo;
+    }
+
 
     @Override
     public String toString() {
         return "NOMBRE: " + nombre + "\n"
                 +"NUMERO: " + numero + "\n"
                 +"COLOR: " + color;
-
     }
 }

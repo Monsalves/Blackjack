@@ -79,24 +79,31 @@ public class Bullseye {
         switch (opcion) {
             case 1:
                 Jugadores.get(0).setMontoApostado(500);
+                Jugadores.get(0).actualizarEfectivo(500);
                 break;
             case 2:
                 Jugadores.get(0).setMontoApostado(1000);
+                Jugadores.get(0).actualizarEfectivo(1000);
                 break;
             case 3:
                 Jugadores.get(0).setMontoApostado(5000);
+                Jugadores.get(0).actualizarEfectivo(5000);
                 break;
             case 4:
                 Jugadores.get(0).setMontoApostado(10000);
+                Jugadores.get(0).actualizarEfectivo(10000);
                 break;
             case 5:
                 Jugadores.get(0).setMontoApostado(25000);
+                Jugadores.get(0).actualizarEfectivo(25000);
                 break;
             case 6:
                 Jugadores.get(0).setMontoApostado(50000);
+                Jugadores.get(0).actualizarEfectivo(50000);
                 break;
             default:
-                System.out.println(" Como parece que usted no entiende , su monto será de  $0");
+                System.out.println(" Como parece que usted no entiende , su monto a apostar será de  $0");
+
                 break;
         }
 

@@ -36,6 +36,11 @@ public class Ludopata {
     public void setEfectivo(int efectivo) {
         this.efectivo = efectivo;
     }
+
+
+    public void actualizarEfectivo(int resto){
+        this.efectivo = this.efectivo - resto;
+    }
 }
 
 
