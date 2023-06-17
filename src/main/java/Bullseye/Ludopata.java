@@ -36,12 +36,19 @@ public class Ludopata {
     public void setEfectivo(int efectivo) {
         this.efectivo = efectivo;
     }
-
-
     public void actualizarEfectivo(int resto){
         this.efectivo = this.efectivo - resto;
     }
+    public void recibirPremio(int multiplicador){
+        this.efectivo = (multiplicador * this.montoApostado)+this.efectivo;
+    }
+
+    public void verCaballo(){
+        System.out.println("Caballo: " + caballoApostado.getNombre() +"\n"+"Número: "+caballoApostado.getNumero() +"\n" + "tiempo de llegada: " + caballoApostado.getTiempo() );
+    }
+
 }
+
 
 
 

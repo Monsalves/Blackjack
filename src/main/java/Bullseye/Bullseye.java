@@ -1,8 +1,12 @@
 package Bullseye;
 
+import BlackJack.Jugador;
+
 import javax.swing.*;
 import java.lang.reflect.Array;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -11,6 +15,14 @@ public class Bullseye {
     ArrayList<Ludopata> Jugadores = new ArrayList<Ludopata>();
 
 
+    public void CrearJugador(){
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("Ingrese su nomnbre");
+        String nombre = teclado.nextLine();
+        Ludopata jugador = new Ludopata(nombre,50000);
+        Jugadores.add(jugador);
+
+    }
     public void CrearCaballos() {
         Random aleatorio = new Random();
         String[] nombres = {"Rayo", "Campione", "TiroAlBlanco", "Spirit", "Pegaso", "Boxer"};
@@ -27,22 +39,19 @@ public class Bullseye {
         }
     }
     public void CrearJugadores(){
-        for (int i = 2; i <= 7; i++) {
+        for (int i = 2; i <= 6; i++) {
             String nombre = "Jugador" + i;
             Ludopata jugador = new Ludopata(nombre,50000);
             Jugadores.add(jugador);
         }
 
     }
-    public void AgregarLudopata(Ludopata jugador ){
-        Jugadores.add(jugador);
-
-    }
-    public void AgregarCaballosJugador(){
+    public void AgregarCaballosJugador() {
+        System.out.println(ListaCaballos.size());
+        int x = 0;
         for (int i = 1; i < Jugadores.size(); i++) {
-            for (int j = 0; j <ListaCaballos.size() ; j++) {
-                Jugadores.get(i).setCaballoApostado(ListaCaballos.get(j));
-            }
+            Jugadores.get(i).setCaballoApostado(ListaCaballos.get(x));
+            x = x +1;
         }
     }
     public void RealizarApuestaAleatoria(){
@@ -59,7 +68,9 @@ public class Bullseye {
         Scanner sc = new Scanner(System.in);
 
         for (int i = 0; i < ListaCaballos.size(); i++) {
+            System.out.println("######################################");
             System.out.println(ListaCaballos.get(i));
+            System.out.println("######################################");
         }
 
         System.out.println("Elige por cuál caballo apostar (Selecciona el número del caballo):");
@@ -75,6 +86,13 @@ public class Bullseye {
     }
     public void SeleccionarMonto(){
         Scanner sc = new Scanner(System.in);
+        System.out.println("Elije el monto a apostar");
+        System.out.println("1-$500");
+        System.out.println("2-$1000");
+        System.out.println("3-$5000");
+        System.out.println("4-$10000");
+        System.out.println("5-$25000");
+        System.out.println("6-$50000");
         int opcion = sc.nextInt();
         switch (opcion) {
             case 1:
@@ -108,7 +126,71 @@ public class Bullseye {
         }
 
     }
-    public void verGanador(){
+    public Ludopata CalcularGanador(){
+        ArrayList<Integer> tiempos = new ArrayList<>();
+        for(Ludopata jugador : Jugadores){
+            tiempos.add(jugador.getCaballoApostado().getTiempo());
+        }
+        Collections.sort(tiempos);
+        for(Ludopata jugador : Jugadores){
+            if (jugador.getCaballoApostado().getTiempo() == tiempos.get(5)){
+                return jugador;
+            }
+        }
+        return null;
+
+    }
+    public void AsignarPremio(Ludopata ganador){
+        int montoApostado = ganador.getMontoApostado();
+        switch (montoApostado) {
+            case 500:
+                ganador.recibirPremio(2);
+                break;
+            case 1000:
+                ganador.recibirPremio(3);
+                break;
+            case 5000:
+                ganador.recibirPremio(4);
+                break;
+            case 10000:
+                ganador.recibirPremio(5);
+                break;
+            case 25000:
+                ganador.recibirPremio(7);
+                break;
+            case 50000:
+                ganador.recibirPremio(10);
+                break;
+            default:
+                ganador.recibirPremio(1);
+        }
+
+
+    }
+    public void verGanador(Ludopata ganador){
+        System.out.println("Enhorabuena al jugador: ");
+        System.out.println(ganador.getNombre());
+        System.out.println("Su nuevo monto de efectivo es de:");
+        System.out.println(ganador.getEfectivo());
+
+    }
+    public void verCarrera(){
+        for(Ludopata jugador : Jugadores){
+            jugador.verCaballo();
+            System.out.println("$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$##$#$#$#$#");
+        }
+    }
+    public void Jugar(){
+        CrearJugador();
+        CrearCaballos();
+        CrearJugadores();
+        SeleccionarCaballo();
+        SeleccionarMonto();
+        AgregarCaballosJugador();
+        RealizarApuestaAleatoria();
+        verCarrera();
+        AsignarPremio(CalcularGanador());
+        verGanador(CalcularGanador());
 
     }
 
