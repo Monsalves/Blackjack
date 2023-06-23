@@ -15,8 +15,9 @@ public class Casino {
 
         switch (opcion) {
             case 1:
+
                 BlackJack cartitas = new BlackJack();
-                cartitas.jugar();
+
                 break;
             case 2:
                 Bullseye caballitos = new Bullseye();

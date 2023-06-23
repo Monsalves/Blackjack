@@ -43,8 +43,15 @@ public class Ludopata {
         this.efectivo = (multiplicador * this.montoApostado)+this.efectivo;
     }
 
-    public void verCaballo(){
-        System.out.println("Caballo: " + caballoApostado.getNombre() +"\n"+"Número: "+caballoApostado.getNumero() +"\n" + "tiempo de llegada: " + caballoApostado.getTiempo() );
+    public String verCaballo(){
+        String texto = "";
+        texto = String.valueOf(caballoApostado.getNombre() +"\n"+"Número: "+caballoApostado.getNumero() +"\n" + "tiempo de llegada: " + caballoApostado.getTiempo() );
+        return texto;
+    }
+
+    public void eliminarCaballo(){
+        caballoApostado=null;
+
     }
 
 }

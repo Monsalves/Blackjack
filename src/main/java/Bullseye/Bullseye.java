@@ -11,14 +11,19 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Bullseye {
-    ArrayList<Caballo> ListaCaballos = new ArrayList<Caballo>();
-    ArrayList<Ludopata> Jugadores = new ArrayList<Ludopata>();
 
 
-    public void CrearJugador(){
-        Scanner teclado = new Scanner(System.in);
-        System.out.println("Ingrese su nomnbre");
-        String nombre = teclado.nextLine();
+    private ArrayList<Caballo> ListaCaballos = new ArrayList<Caballo>();
+    private ArrayList<Ludopata> Jugadores = new ArrayList<Ludopata>();
+
+
+    public ArrayList<Ludopata> getJugadores() {
+        return Jugadores;
+    }
+    public ArrayList<Caballo> getListaCaballos() {
+        return ListaCaballos;
+    }
+    public void CrearJugador(String nombre){
         Ludopata jugador = new Ludopata(nombre,50000);
         Jugadores.add(jugador);
 
@@ -40,7 +45,7 @@ public class Bullseye {
     }
     public void CrearJugadores(){
         for (int i = 2; i <= 6; i++) {
-            String nombre = "Jugador" + i;
+            String nombre = "Jugador " + i;
             Ludopata jugador = new Ludopata(nombre,50000);
             Jugadores.add(jugador);
         }
@@ -64,25 +69,14 @@ public class Bullseye {
 
 
     }
-    public void SeleccionarCaballo(){
-        Scanner sc = new Scanner(System.in);
+    public void SeleccionarCaballo(Caballo caballoSeleccionado){
 
-        for (int i = 0; i < ListaCaballos.size(); i++) {
-            System.out.println("######################################");
-            System.out.println(ListaCaballos.get(i));
-            System.out.println("######################################");
+        for(Caballo caballo : ListaCaballos){
+            if (caballo == caballoSeleccionado){
+                Jugadores.get(0).setCaballoApostado(caballo);
+                ListaCaballos.remove(caballo);
+            }
         }
-
-        System.out.println("Elige por cuál caballo apostar (Selecciona el número del caballo):");
-        int opcion = sc.nextInt();
-
-        Caballo caballo = ListaCaballos.get(opcion - 1);
-
-        Jugadores.get(0).setCaballoApostado(caballo);
-
-        ListaCaballos.remove(opcion - 1);
-
-        System.out.println("Has realizado tu apuesta por el caballo: " + caballo);
     }
     public void SeleccionarMonto(){
         Scanner sc = new Scanner(System.in);
@@ -174,17 +168,27 @@ public class Bullseye {
         System.out.println(ganador.getEfectivo());
 
     }
-    public void verCarrera(){
+    public String verCarrera(){
+        String texto = "";
         for(Ludopata jugador : Jugadores){
-            jugador.verCaballo();
-            System.out.println("$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$##$#$#$#$#");
+            texto = jugador.verCaballo() + "\n" + texto;
+
         }
+        return texto;
+    }
+    public void limpiarJuego(){
+        for (int i = 1; i <Jugadores.size(); i++) {
+            Jugadores.remove(i);
+        }
+        Jugadores.get(0).eliminarCaballo();
+        ListaCaballos.clear();
+
     }
     public void Jugar(){
-        CrearJugador();
+
         CrearCaballos();
         CrearJugadores();
-        SeleccionarCaballo();
+
         SeleccionarMonto();
         AgregarCaballosJugador();
         RealizarApuestaAleatoria();

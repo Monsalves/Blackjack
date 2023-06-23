@@ -32,8 +32,8 @@ public class Caballo {
 
     @Override
     public String toString() {
-        return "NOMBRE: " + nombre + "\n"
-                +"NUMERO: " + numero + "\n"
-                +"COLOR: " + color;
+        return " NOMBRE: " + nombre + "\n"
+                +" NUMERO: " + numero + "\n"
+                +" COLOR: " + color;
     }
 }
